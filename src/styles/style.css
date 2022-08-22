@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+#root {
+  width: 800px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 2px gray;
+  border: 1px solid purple;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  color: white;
+  background-color: purple;
+}
+.nav-heading {
+  font-size: 20px;
+  text-indent: 20px;
+  font-weight: 500;
+}
+.nav-project {
+  font-size: 15px;
+  font-weight: lighter;
+}
+.text {
+  border-radius: 20px;
+  text-indent: 20px;
+}
+.form {
+  margin-top: 20px;
+  padding: 10px 40px;
+  display: grid;
+  grid-template: 40px 40px/1fr 1fr;
+  grid-gap: 10px;
+}
+.submit-btn {
+  grid-column: 1 / -1;
+  background-color: purple;
+  color: whitesmoke;
+  border-radius: 20px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.meme-image {
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
