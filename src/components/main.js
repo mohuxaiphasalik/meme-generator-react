@@ -1,24 +1,60 @@
 import React from "react";
 import memesdata from "../memesdata";
 export default function Main() {
-  let image;
+  const [memeData, setMemeData] = React.useState({
+    upperText: "",
+    lowerText: "",
+    imgUrl: "https://i.imgflip.com/9ehk.jpg",
+  });
+  const [allMemesData, setAllMemesData] = React.useState(memesdata);
   function clickHandle() {
     let num = Math.random() * 100;
     num = Math.floor(num);
-    image = memesdata.data.memes[num].url;
-    console.log(image);
+    const newUrl = memesdata.data.memes[num].url;
+    console.log(newUrl);
+    setMemeData((prevImg) => ({
+      ...prevImg,
+      imgUrl: newUrl,
+    }));
+  }
+  function handleChange(event) {
+    setMemeData((prevImg) => {
+      return {
+        ...prevImg,
+        [event.target.name]: event.target.value,
+      };
+    });
   }
   return (
     <main>
       <div action="" className="form">
-        <input placeholder="Upper Text" type="text" className="text" />
+        <input
+          placeholder="Upper Text"
+          type="text"
+          name="upperText"
+          value={memeData.upperText}
+          className="text"
+          onChange={handleChange}
+        />
 
-        <input placeholder="Lower Text" type="text" className="text" />
+        <input
+          placeholder="Lower Text"
+          name="lowerText"
+          value={memeData.lowerText}
+          type="text"
+          className="text"
+          onChange={handleChange}
+        />
         <button className="submit-btn" onClick={clickHandle}>
           Get New Meme 🖼️
         </button>
       </div>
-      <img className="meme-image" src={`${image}`} alt="" />
+
+      <div className="meme">
+        <img className="meme-image" src={memeData.imgUrl} alt="" />
+        <h2 className="meme-text top">{memeData.upperText}</h2>
+        <h2 className="meme-text bottom">{memeData.lowerText}</h2>
+      </div>
     </main>
   );
 }
